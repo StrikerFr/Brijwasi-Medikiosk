@@ -25,17 +25,17 @@ import { HelpModal } from "@/features/landing/components/HelpModal";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "MediKiosk - Tell us what's bothering you" },
+      { title: "MediKiosk | Voice-First Multilingual Patient Intake" },
       {
         name: "description",
         content:
-          "MediKiosk is a calm, voice-first patient case-taking experience. Speak your concern in Hindi or English — no typing — and your clinician receives a structured case.",
+          "MediKiosk is a calm, voice-first patient case-taking experience. Speak your concern in Hindi or English with zero typing, and your clinician receives a structured case.",
       },
-      { property: "og:title", content: "MediKiosk - Tell us what's bothering you" },
+      { property: "og:title", content: "MediKiosk | Voice-First Multilingual Patient Intake" },
       {
         property: "og:description",
         content:
-          "Speak your problem in Hindi or English at the kiosk. No typing needed. Your clinician receives a clear, structured case.",
+          "Speak your problem in Hindi or English at the kiosk with zero typing needed. Your clinician receives a clear, structured case.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://medikiosk.vercel.app/" },

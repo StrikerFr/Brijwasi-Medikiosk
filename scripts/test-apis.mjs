@@ -31,7 +31,7 @@ try {
         contents: [{ role: "user", parts: [{ text: "Hello, reply with OK" }] }],
       }),
       signal: AbortSignal.timeout(15000),
-    }
+    },
   );
   if (res.ok) {
     const data = await res.json();
@@ -103,7 +103,10 @@ console.log("\n6. OCR.space API:");
 try {
   const form = new FormData();
   form.append("apikey", env.OCR_SPACE_API_KEY);
-  form.append("base64Image", "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=");
+  form.append(
+    "base64Image",
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+  );
   const res = await fetch("https://api.ocr.space/parse/image", {
     method: "POST",
     body: form,
@@ -122,4 +125,3 @@ try {
 } catch (e) {
   console.error("   Status: ERROR ->", e.message);
 }
-

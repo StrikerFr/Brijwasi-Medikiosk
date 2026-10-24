@@ -18,6 +18,7 @@
     "check": "npm run typecheck && npm run lint",
     "check:env": "node --env-file-if-exists=.env scripts/check-env.mjs",
     "check:apis": "node --env-file-if-exists=.env scripts/test-apis.mjs",
+    "test": "vitest run",
     "test:deployment": "vitest run src/lib/clinical/providers.test.ts"
   },
   "overrides": {

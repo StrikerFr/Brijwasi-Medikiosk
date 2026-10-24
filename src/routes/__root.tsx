@@ -82,15 +82,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "MediKiosk - Voice-first patient check-in" },
+      { title: "MediKiosk | Voice-First Multilingual Healthcare Intake" },
       {
         name: "description",
         content:
-          "MediKiosk lets patients describe their concern by speaking, in Hindi or English, and prepares a clear case for the clinician.",
+          "MediKiosk lets patients describe their concern by speaking in Hindi or English, preparing a clear, structured case for the clinician.",
       },
       { name: "author", content: "MediKiosk" },
       { property: "og:site_name", content: "MediKiosk" },
-      { property: "og:title", content: "MediKiosk - Voice-first patient check-in" },
+      { property: "og:title", content: "MediKiosk | Voice-First Multilingual Healthcare Intake" },
       {
         property: "og:description",
         content: "Speak your concern in Hindi or English. Your clinician receives a clear case.",
