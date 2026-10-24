@@ -1,0 +1,402 @@
+import { useCallback, useEffect, type ReactNode } from "react";
+import { Link, useNavigate, useSearch } from "@tanstack/react-router";
+import {
+  ArrowLeft,
+  ArrowRight,
+  CheckCircle2,
+  FileText,
+  Mic,
+  ShieldAlert,
+  Stethoscope,
+  Activity,
+  Users,
+  Pill,
+  ClipboardList,
+  Settings,
+  Server,
+  HeartPulse,
+  Globe,
+} from "lucide-react";
+import {
+  demoConversation,
+  demoDocuments,
+  demoFindings,
+  demoMedicines,
+  demoPatient,
+  demoQueue,
+  demoStructuredCase,
+  demoVitals,
+} from "./data";
+import {
+  LiveConversation,
+  LiveDocumentUpload,
+  LiveFindings,
+  LiveIdentification,
+  LivePrescriptionRead,
+  LiveVerification,
+  LiveVitals,
+} from "./live";
+import {
+  IntroDetail,
+  LanguageConsent,
+  CheckinComplete,
+  AssistedDetail,
+  ClinicianDetail,
+  CaseDetail,
+  TimelineDetail,
+  ReportDetail,
+  PatientHomeDetail,
+  OpsAdminDetail,
+  ClosingDetail,
+} from "./live2";
+import { RotateCcw } from "lucide-react";
+import { useState } from "react";
+
+type Step = {
+  group: string;
+  title: string;
+  say: string;
+  live?: string;
+  icon: typeof Mic;
+  body: ReactNode;
+};
+
+function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return (
+    <div className={`rounded-2xl border border-border bg-card p-5 shadow-soft ${className}`}>
+      {children}
+    </div>
+  );
+}
+function Pill_({
+  children,
+  tone = "muted",
+}: {
+  children: ReactNode;
+  tone?: "muted" | "primary" | "danger" | "ok";
+}) {
+  const t = {
+    muted: "bg-muted text-muted-foreground",
+    primary: "bg-primary-soft text-primary",
+    danger: "bg-destructive/10 text-destructive",
+    ok: "bg-primary/10 text-primary",
+  }[tone];
+  return (
+    <span
+      className={`inline-flex whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold ${t}`}
+    >
+      {children}
+    </span>
+  );
+}
+function Field({ label, value }: { label: string | undefined; value: string | undefined }) {
+  return (
+    <div className="rounded-xl border border-border bg-background px-4 py-3">
+      <p className="text-xs text-muted-foreground">{label}</p>
+      <p className="text-lg font-semibold">{value}</p>
+    </div>
+  );
+}
+
+const steps: Step[] = [
+  {
+    group: "Intro",
+    title: "MediKiosk — voice-first patient intake",
+    icon: HeartPulse,
+    say: "Patients speak their problem in Hindi or English. No typing. The clinician receives a clear, structured case — and a safety check of every medicine they already take.",
+    live: "/",
+    body: <IntroDetail />,
+  },
+  {
+    group: "Patient kiosk",
+    title: "1. Language & consent",
+    icon: Globe,
+    say: "The kiosk greets in Hindi and English together. The patient taps a language and agrees to share information — every screen can be read aloud.",
+    live: "/patient-kiosk",
+    body: <LanguageConsent />,
+  },
+  {
+    group: "Patient kiosk",
+    title: "2. Identification",
+    icon: Users,
+    say: "Basic details are collected with big tap-friendly fields. A returning patient is matched to their existing record.",
+    live: "/patient-kiosk/identification",
+    body: <LiveIdentification />,
+  },
+  {
+    group: "Patient kiosk",
+    title: "3. Speak your problem",
+    icon: Mic,
+    say: "The patient just talks. Speech is transcribed and the kiosk reads back what it understood, so the patient can confirm it.",
+    live: "/patient-kiosk/case-taking",
+    body: <LiveConversation />,
+  },
+  {
+    group: "Patient kiosk",
+    title: "4a. Vitals",
+    icon: Activity,
+    say: "Staff or a connected device records vitals. They attach to the same visit automatically.",
+    live: "/patient-kiosk/vitals",
+    body: <LiveVitals />,
+  },
+  {
+    group: "Patient kiosk",
+    title: "4b. Document upload — live reading",
+    icon: FileText,
+    say: "The patient holds an old report to the camera. MediKiosk uploads it, reads the text, recognises the document type and pulls out each value — all in seconds.",
+    live: "/patient-kiosk/documents",
+    body: <LiveDocumentUpload />,
+  },
+  {
+    group: "Patient kiosk",
+    title: "5. Check-in complete",
+    icon: CheckCircle2,
+    say: "The patient gets a token number. Behind the scenes, their words became a structured case for the doctor.",
+    live: "/patient-kiosk/complete",
+    body: <CheckinComplete />,
+  },
+  {
+    group: "Care team",
+    title: "6. Assisted kiosk (reception)",
+    icon: ClipboardList,
+    say: "Staff can help elderly or low-literacy patients through the same intake and track who is waiting.",
+    live: "/assisted-kiosk",
+    body: <AssistedDetail />,
+  },
+  {
+    group: "Care team",
+    title: "7. Clinician dashboard",
+    icon: Stethoscope,
+    say: "The doctor sees a prioritised queue. Urgent and priority cases rise to the top, already prepared.",
+    live: "/clinician",
+    body: <ClinicianDetail />,
+  },
+  {
+    group: "Care team",
+    title: "8. Prepared patient case",
+    icon: FileText,
+    say: "One click opens the full case: what the patient said (original + translation), vitals, documents and alerts — before the consultation starts.",
+    live: "/clinician/patients",
+    body: <CaseDetail />,
+  },
+  {
+    group: "Medication safety",
+    title: "9. Prescriptions from multiple doctors",
+    icon: FileText,
+    say: "Patients often see several doctors. They upload all prescriptions; MediKiosk reads handwriting and extracts every medicine.",
+    live: "/medication-safety",
+    body: <LivePrescriptionRead />,
+  },
+  {
+    group: "Medication safety",
+    title: "10. Indian brand verification",
+    icon: Pill,
+    say: "Each brand is matched to its active ingredient using live web sources with links. Low-confidence matches go to a pharmacist — and 'not found' never means fake.",
+    live: "/medication-safety",
+    body: <LiveVerification />,
+  },
+  {
+    group: "Medication safety",
+    title: "11. One medication timeline",
+    icon: Activity,
+    say: "All doctors' medicines are combined into one chronological timeline so overlaps are obvious.",
+    live: "/medication-safety",
+    body: <TimelineDetail />,
+  },
+  {
+    group: "Medication safety",
+    title: "12. Safety findings",
+    icon: ShieldAlert,
+    say: "Findings are ranked by priority, each with a plain explanation and the next action. Checks without a licensed source are shown as unavailable — never guessed.",
+    live: "/medication-safety",
+    body: <LiveFindings />,
+  },
+  {
+    group: "Medication safety",
+    title: "13. Professional review & report",
+    icon: CheckCircle2,
+    say: "A pharmacist or clinician signs off, and a clean PDF report is generated for the patient's next doctor.",
+    live: "/medication-safety",
+    body: <ReportDetail />,
+  },
+  {
+    group: "Patient & platform",
+    title: "14. Patient health home",
+    icon: HeartPulse,
+    say: "Patients get their own portal: consultations, reports, documents, timeline and an assistant to answer simple questions.",
+    live: "/patient",
+    body: <PatientHomeDetail />,
+  },
+  {
+    group: "Patient & platform",
+    title: "15. Operations & admin",
+    icon: Settings,
+    say: "Operators monitor processing health and audit trails; admins manage facilities, users and roles.",
+    live: "/admin",
+    body: <OpsAdminDetail />,
+  },
+  {
+    group: "Close",
+    title: "Thank you",
+    icon: CheckCircle2,
+    say: "From a patient's spoken words to a reviewed, safer medication plan — in one MediKiosk flow.",
+    live: "/",
+    body: <ClosingDetail />,
+  },
+];
+
+function QueueTable() {
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full min-w-[560px] text-left text-sm">
+        <thead className="text-muted-foreground">
+          <tr>
+            <th className="py-2">Patient</th>
+            <th>Concern</th>
+            <th>Wait</th>
+            <th>Priority</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {demoQueue.map((p) => (
+            <tr key={p.name} className="border-t border-border">
+              <td className="py-3 font-semibold">
+                {p.name} · {p.age}
+              </td>
+              <td>{p.concern}</td>
+              <td>{p.wait} min</td>
+              <td>
+                <Pill_
+                  tone={
+                    p.priority === "Urgent"
+                      ? "danger"
+                      : p.priority === "Priority"
+                        ? "primary"
+                        : "muted"
+                  }
+                >
+                  {p.priority}
+                </Pill_>
+              </td>
+              <td>{p.status}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export function DemoTour() {
+  const { step: raw } = useSearch({ from: "/demo" });
+  const navigate = useNavigate({ from: "/demo" });
+  const step = Math.min(raw, steps.length - 1);
+  const s = steps[step]!;
+  const go = useCallback(
+    (n: number) =>
+      navigate({ search: { step: Math.max(0, Math.min(steps.length - 1, n)) }, replace: true }),
+    [navigate],
+  );
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight" || e.key === " ") {
+        e.preventDefault();
+        go(step + 1);
+      }
+      if (e.key === "ArrowLeft") go(step - 1);
+    };
+    window.addEventListener("keydown", onKey);
+    document.title = `${step + 1}/${steps.length} — ${s.title} · MediKiosk Demo`;
+    return () => window.removeEventListener("keydown", onKey);
+  }, [go, step, s.title]);
+
+  const Icon = s.icon;
+  const [replay, setReplay] = useState(0);
+  return (
+    <div className="flex min-h-dvh flex-col bg-background text-foreground">
+      <header className="flex items-center justify-between gap-3 border-b border-border px-5 py-3">
+        <Link to="/" className="text-lg font-bold">
+          MediKiosk <span className="font-normal text-muted-foreground">· Demo</span>
+        </Link>
+        <span className="text-xs text-muted-foreground">Sample data only</span>
+      </header>
+      <div className="h-1 bg-muted">
+        <div
+          className="h-1 bg-primary transition-all"
+          style={{ width: `${((step + 1) / steps.length) * 100}%` }}
+        />
+      </div>
+
+      <div className="mx-auto flex w-full max-w-6xl flex-1 gap-6 px-5 py-6">
+        <nav className="hidden w-56 shrink-0 space-y-1 lg:block">
+          {steps.map((x, i) => (
+            <button
+              key={i}
+              onClick={() => go(i)}
+              className={`block w-full rounded-lg px-3 py-2 text-left text-sm ${i === step ? "bg-primary-soft font-semibold text-primary" : "text-muted-foreground hover:bg-muted"}`}
+            >
+              {x.title}
+            </button>
+          ))}
+        </nav>
+
+        <main className="flex-1 space-y-5">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+              {s.group} · {step + 1} of {steps.length}
+            </p>
+            <h1 className="mt-1 flex items-center gap-3 text-3xl font-semibold sm:text-4xl">
+              <Icon className="h-8 w-8 text-primary" />
+              {s.title}
+            </h1>
+            <p className="mt-3 max-w-3xl text-lg text-muted-foreground">{s.say}</p>
+          </div>
+          <button
+            onClick={() => setReplay((r) => r + 1)}
+            className="inline-flex items-center gap-2 rounded-lg border border-border px-3 py-1.5 text-sm"
+          >
+            <RotateCcw className="h-4 w-4" />
+            Replay animation
+          </button>
+          <div
+            key={`${step}-${replay}`}
+            className="animate-in fade-in slide-in-from-bottom-2 duration-300"
+          >
+            {s.body}
+          </div>
+        </main>
+      </div>
+
+      <footer className="sticky bottom-0 flex items-center justify-between gap-3 border-t border-border bg-background/95 px-5 py-3 backdrop-blur">
+        <button
+          onClick={() => go(step - 1)}
+          disabled={step === 0}
+          className="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-3 font-semibold disabled:opacity-40"
+        >
+          <ArrowLeft className="h-4 w-4" /> Back
+        </button>
+        {s.live ? (
+          <a
+            href={s.live}
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm text-primary underline"
+          >
+            Open real page ↗
+          </a>
+        ) : (
+          <span />
+        )}
+        <button
+          onClick={() => go(step + 1)}
+          disabled={step === steps.length - 1}
+          className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground disabled:opacity-40"
+        >
+          Next <ArrowRight className="h-4 w-4" />
+        </button>
+      </footer>
+    </div>
+  );
+}
