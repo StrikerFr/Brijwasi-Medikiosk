@@ -112,22 +112,6 @@ A complete Judge & Evaluator Guide is available in [docs/JUDGES.md](docs/JUDGES.
 | **Patient Health Portal** | [`/patient`](/patient)                     | Patient longitudinal timeline and intelligent health records assistant.                           |
 | **Platform Telemetry**    | [`/operations`](/operations)               | System operations, dead-letter queue, and OCR/AI latency tracking.                                |
 | **Administration**        | [`/admin`](/admin)                         | Facility administration, user management, and audit logs.                                         |
-
----
-
-## ⚡ Verified Provider Integrations
-
-All external providers are connected and verified via our automated connectivity test suite (`npm run check:apis`):
-
-| Provider           | Service               | Target / Model     | Status                                         |
-| :----------------- | :-------------------- | :----------------- | :--------------------------------------------- |
-| **Turso (libSQL)** | Distributed Database  | Cloud Edge Cluster | **CONNECTED** (Health query verified)          |
-| **Google Gemini**  | Clinical Intelligence | `gemini-2.5-flash` | **CONNECTED** (Strict JSON reasoning verified) |
-| **Groq**           | Voice Engine          | Whisper & LLM API  | **CONNECTED** (HTTP 200 verified)              |
-| **ElevenLabs**     | Spoken Kiosk Audio    | `medikiosk` voice  | **CONNECTED** (Voice details verified)         |
-| **Clerk**          | Authentication        | Backend Admin API  | **CONNECTED** (Secret key verified)            |
-| **OCR.space**      | Document OCR          | Engine API         | **CONNECTED** (Engine verified)                |
-
 ---
 
 ## 🚀 Quick Start
@@ -172,25 +156,6 @@ This repository is optimized for deployment using Nitro's Vercel Build Output AP
 7. Click **Deploy**.
 
 For detailed deployment instructions and quota management, see [docs/VERCEL.md](docs/VERCEL.md).
-
----
-
-## 🔐 Environment Variables
-
-| Variable                                  | Description                                                   | Exposure            |
-| :---------------------------------------- | :------------------------------------------------------------ | :------------------ |
-| `VITE_CLERK_PUBLISHABLE_KEY`              | Clerk public key for client-side authentication               | Public (Build-time) |
-| `CLERK_SECRET_KEY`                        | Clerk server-side secret key                                  | Server Only         |
-| `TURSO_DATABASE_URL`                      | Turso libSQL connection URL                                   | Server Only         |
-| `TURSO_AUTH_TOKEN`                        | Turso authorization token                                     | Server Only         |
-| `GEMINI_API_KEY`                          | Google Gemini API key                                         | Server Only         |
-| `GEMINI_MODEL`                            | Explicit model selection (recommended: `gemini-2.5-flash`)    | Server Only         |
-| `GROQ_API_KEY`                            | Groq API key for Whisper STT and web search                   | Server Only         |
-| `ELEVENLABS_API_KEY`                      | ElevenLabs API key for spoken prompts                         | Server Only         |
-| `ELEVENLABS_VOICE_ID`                     | Voice profile ID for kiosk accessibility                      | Server Only         |
-| `OCR_SPACE_API_KEY`                       | OCR.space API key for prescription & document reading         | Server Only         |
-| `MEDICATION_EXTERNAL_PROCESSING_APPROVED` | Operator privacy approval flag (`true`/`false`)               | Server Only         |
-| `MEDICATION_PROFESSIONAL_ROLES`           | JSON mapping of Clerk user IDs/emails to clinician/pharmacist | Server Only         |
 
 ---
 
