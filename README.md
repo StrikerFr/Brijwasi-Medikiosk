@@ -3,30 +3,63 @@
 > **Voice-First, Multilingual Clinical Intake & Medication Safety Suite**  
 > Built for high-volume outpatient clinics, hospitals, and community healthcare centers in India.
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue.svg)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-19.2-cyan.svg)](https://react.dev/)
-[![TanStack Start](https://img.shields.io/badge/TanStack%20Start-1.168-orange.svg)](https://tanstack.com/start)
-[![Google Gemini](https://img.shields.io/badge/Clinical%20AI-Gemini%202.5%20Flash-4285F4.svg)](https://ai.google.dev/)
-[![Groq](https://img.shields.io/badge/Voice%20STT-Groq%20Whisper-F55036.svg)](https://groq.com/)
-[![ElevenLabs](https://img.shields.io/badge/Voice%20TTS-ElevenLabs-black.svg)](https://elevenlabs.io/)
-[![Turso](https://img.shields.io/badge/Database-Turso%20libSQL-00C988.svg)](https://turso.tech/)
-[![Clerk](https://img.shields.io/badge/Auth-Clerk-6C47FF.svg)](https://clerk.com/)
-[![Tests](https://img.shields.io/badge/Tests-36%20Passing-success.svg)](https://vitest.dev/)
+<p align="center">
+  <a href="https://brijwasi-medikiosk.vercel.app/">
+    <img src="https://img.shields.io/badge/🚀_Launch_Live_App-brijwasi--medikiosk.vercel.app-00C988?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Application" />
+  </a>
+  &nbsp;
+  <a href="https://brijwasi-medikiosk.vercel.app/demo">
+    <img src="https://img.shields.io/badge/🎬_Interactive_Demo-15--Step_Showcase-FF6B6B?style=for-the-badge&logo=youtube&logoColor=white" alt="Interactive Demo" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/StrikerFr/Brijwasi-Medikiosk">
+    <img src="https://img.shields.io/badge/⭐_GitHub_Repo-StrikerFr%2FBrijwasi--Medikiosk-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repository" />
+  </a>
+  &nbsp;
+  <a href="docs/JUDGES.md">
+    <img src="https://img.shields.io/badge/⚖️_Judge_Guide-docs%2FJUDGES.md-4285F4?style=for-the-badge" alt="Judge Guide" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://brijwasi-medikiosk.vercel.app/patient-kiosk"><img src="https://img.shields.io/badge/🎙️_Patient_Kiosk-Hindi%20%2F%20English-0284c7?style=flat-square" alt="Patient Kiosk" /></a>
+  &nbsp;
+  <a href="https://brijwasi-medikiosk.vercel.app/clinician"><img src="https://img.shields.io/badge/🩺_Clinician_Workspace-Doctor_Queue-0d9488?style=flat-square" alt="Clinician Workspace" /></a>
+  &nbsp;
+  <a href="https://brijwasi-medikiosk.vercel.app/medication-safety"><img src="https://img.shields.io/badge/💊_Medication_Safety-Reconciler-e11d48?style=flat-square" alt="Medication Safety" /></a>
+  &nbsp;
+  <a href="https://brijwasi-medikiosk.vercel.app/assisted-kiosk"><img src="https://img.shields.io/badge/🤝_Assisted_Intake-Desk_Mode-7c3aed?style=flat-square" alt="Assisted Intake" /></a>
+  &nbsp;
+  <a href="https://brijwasi-medikiosk.vercel.app/patient"><img src="https://img.shields.io/badge/📱_Patient_Portal-Vault_%26_Timeline-ea580c?style=flat-square" alt="Patient Portal" /></a>
+  &nbsp;
+  <a href="https://brijwasi-medikiosk.vercel.app/operations"><img src="https://img.shields.io/badge/📊_Operations-Telemetry_%26_Audit-475569?style=flat-square" alt="Operations" /></a>
+</p>
+
+<p align="center">
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.8-blue.svg" alt="TypeScript" /></a>
+  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19.2-cyan.svg" alt="React" /></a>
+  <a href="https://tanstack.com/start"><img src="https://img.shields.io/badge/TanStack%20Start-1.168-orange.svg" alt="TanStack Start" /></a>
+  <a href="https://ai.google.dev/"><img src="https://img.shields.io/badge/Clinical%20AI-Gemini%202.5%20Flash-4285F4.svg" alt="Google Gemini" /></a>
+  <a href="https://groq.com/"><img src="https://img.shields.io/badge/Voice%20STT-Groq%20Whisper-F55036.svg" alt="Groq" /></a>
+  <a href="https://elevenlabs.io/"><img src="https://img.shields.io/badge/Voice%20TTS-ElevenLabs-black.svg" alt="ElevenLabs" /></a>
+  <a href="https://turso.tech/"><img src="https://img.shields.io/badge/Database-Turso%20libSQL-00C988.svg" alt="Turso" /></a>
+  <a href="https://clerk.com/"><img src="https://img.shields.io/badge/Auth-Clerk-6C47FF.svg" alt="Clerk" /></a>
+  <a href="https://vitest.dev/"><img src="https://img.shields.io/badge/Tests-36%20Passing-success.svg" alt="Tests" /></a>
+</p>
 
 ---
 
 ## 📖 Table of Contents
 
 - [Overview & The Problem](#-overview--the-problem)
+- [Application Screenshots & Showcase](#-application-screenshots--showcase)
+- [Live Evaluation for Judges](#-live-evaluation-for-judges)
 - [System Architecture](#-system-architecture)
 - [Key Features](#-key-features)
-- [Live Evaluation for Judges](#-live-evaluation-for-judges)
-- [Verified Provider Integrations](#-verified-provider-integrations)
 - [Quick Start](#-quick-start)
 - [Deploying to Vercel](#-deploying-to-vercel)
-- [Environment Variables](#-environment-variables)
-- [Quality Assurance & Commands](#-quality-assurance--commands)
 - [Responsible AI & Clinical Governance](#-responsible-ai--clinical-governance)
+- [Quality Assurance & Commands](#-quality-assurance--commands)
 - [Documentation Directory](#-documentation-directory)
 
 ---
@@ -39,6 +72,53 @@ In Indian Outpatient Departments (OPDs), doctors frequently consult 60 to 100+ p
 
 1. **Patient Check-In Kiosk**: A walk-up, bilingual (Hindi & English) touch-and-voice interface that captures symptoms, vitals, and old medical documents without requiring patients to type.
 2. **Medication Safety Reconciler**: A deterministic clinical engine that parses prescriptions across different doctors, maps Indian brand names to verified active pharmaceutical ingredients, and highlights timeline overlaps and dosage risks for professional sign-off.
+
+---
+
+## 📸 Application Screenshots & Showcase
+
+### 1. Bilingual Voice-First Patient Intake Kiosk
+> Walk-up touch and speech interface supporting natural spoken complaints in Hindi and English. Audio is transcribed in real-time via Groq Whisper and read aloud using ElevenLabs.
+
+![MediKiosk Patient Walk-up Screen](3.png)
+
+---
+
+### 2. Clinical Workspace & Multi-Prescription Ingestion
+> Healthcare provider dashboard allowing clinicians and pharmacists to upload multiple digital or handwritten prescriptions (PDF, PNG, JPEG) across past doctors into a single unified patient case.
+
+![Clinical Workspace Prescription Ingestion](4.png)
+
+---
+
+### 3. Automated Safety Findings & Polypharmacy Overlap Detection
+> Deterministic pharmaceutical reconciliation engine checks active ingredients against Indian pharmacopoeial rules, immediately detecting compound toxicities (e.g., duplicate Paracetamol in Dolo 650 and Crocin Advance).
+
+![Medication Safety Findings and Overlap Detection](2.png)
+
+---
+
+### 4. Reconciled Medication Safety Report & Pharmacist Sign-Off
+> Comprehensive clinical report consolidating verified molecules, dosage schedules, timeline overlaps, and actionable warnings ready for physician and pharmacist review.
+
+![Medication Safety Report](1.png)
+
+---
+
+## 🏆 Live Evaluation for Judges
+
+A complete Judge & Evaluator Guide is available in [docs/JUDGES.md](docs/JUDGES.md).
+
+| Surface | Direct Live Link | Local Route | Description |
+| :--- | :--- | :--- | :--- |
+| **Interactive Demo** | [Launch Guided Demo ↗](https://brijwasi-medikiosk.vercel.app/demo) | [`/demo`](https://brijwasi-medikiosk.vercel.app/demo) | 15-step animated product showcase walking through every feature with sample data. |
+| **Patient Kiosk** | [Launch Patient Kiosk ↗](https://brijwasi-medikiosk.vercel.app/patient-kiosk) | [`/patient-kiosk`](https://brijwasi-medikiosk.vercel.app/patient-kiosk) | Real voice check-in, language toggle (Hindi/English), and token generation. |
+| **Clinician Workspace** | [Open Clinician Worklist ↗](https://brijwasi-medikiosk.vercel.app/clinician) | [`/clinician`](https://brijwasi-medikiosk.vercel.app/clinician) | Doctor's worklist, prioritized queue, and structured patient case view. |
+| **Medication Safety** | [Open Medication Safety ↗](https://brijwasi-medikiosk.vercel.app/medication-safety) | [`/medication-safety`](https://brijwasi-medikiosk.vercel.app/medication-safety) | Multi-prescription upload, OCR extraction, active ingredient matching, and PDF report generation. |
+| **Assisted Intake** | [Open Assisted Intake ↗](https://brijwasi-medikiosk.vercel.app/assisted-kiosk) | [`/assisted-kiosk`](https://brijwasi-medikiosk.vercel.app/assisted-kiosk) | Receptionist interface for helping walk-in patients. |
+| **Patient Health Portal** | [Open Patient Portal ↗](https://brijwasi-medikiosk.vercel.app/patient) | [`/patient`](https://brijwasi-medikiosk.vercel.app/patient) | Patient longitudinal timeline and intelligent health records assistant. |
+| **Platform Telemetry** | [Open Operations Telemetry ↗](https://brijwasi-medikiosk.vercel.app/operations) | [`/operations`](https://brijwasi-medikiosk.vercel.app/operations) | System operations, dead-letter queue, and OCR/AI latency tracking. |
+| **Administration** | [Open Admin Console ↗](https://brijwasi-medikiosk.vercel.app/admin) | [`/admin`](https://brijwasi-medikiosk.vercel.app/admin) | Facility administration, user management, and audit logs. |
 
 ---
 
@@ -98,22 +178,6 @@ In Indian Outpatient Departments (OPDs), doctors frequently consult 60 to 100+ p
 
 ---
 
-## 🏆 Live Evaluation for Judges
-
-A complete Judge & Evaluator Guide is available in [docs/JUDGES.md](docs/JUDGES.md).
-
-| Surface                   | Path                                       | Description                                                                                       |
-| :------------------------ | :----------------------------------------- | :------------------------------------------------------------------------------------------------ |
-| **Interactive Demo**      | [`/demo`](/demo)                           | 15-step animated product showcase walking through every feature with sample data.                 |
-| **Patient Kiosk**         | [`/patient-kiosk`](/patient-kiosk)         | Real voice check-in, language toggle, and token generation.                                       |
-| **Clinician Workspace**   | [`/clinician`](/clinician)                 | Doctor's worklist, prioritized queue, and structured patient case view.                           |
-| **Medication Safety**     | [`/medication-safety`](/medication-safety) | Multi-prescription upload, OCR extraction, active ingredient matching, and PDF report generation. |
-| **Assisted Intake**       | [`/assisted-kiosk`](/assisted-kiosk)       | Receptionist interface for helping walk-in patients.                                              |
-| **Patient Health Portal** | [`/patient`](/patient)                     | Patient longitudinal timeline and intelligent health records assistant.                           |
-| **Platform Telemetry**    | [`/operations`](/operations)               | System operations, dead-letter queue, and OCR/AI latency tracking.                                |
-| **Administration**        | [`/admin`](/admin)                         | Facility administration, user management, and audit logs.                                         |
----
-
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -152,7 +216,7 @@ This repository is optimized for deployment using Nitro's Vercel Build Output AP
 3. Set **Build Command**: `npm run build`.
 4. Set **Install Command**: `npm ci`.
 5. **Output Directory**: Leave empty (Nitro outputs directly to `.vercel/output`).
-6. Configure the [Environment Variables](#-environment-variables) for **Production** and **Preview**.
+6. Configure the Environment Variables for **Production** and **Preview** (see [docs/VERCEL.md](docs/VERCEL.md)).
 7. Click **Deploy**.
 
 For detailed deployment instructions and quota management, see [docs/VERCEL.md](docs/VERCEL.md).
