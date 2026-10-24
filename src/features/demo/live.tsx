@@ -189,7 +189,7 @@ export function LiveVitals() {
             className={`rounded-xl border px-4 py-4 text-center ${n > i ? "border-primary/40" : "border-border"}`}
           >
             <p className="text-xs text-muted-foreground">{l}</p>
-            <p className="text-2xl font-bold">{n > i ? v : "—"}</p>
+            <p className="text-2xl font-bold">{n > i ? v : "..."}</p>
             <p className="text-xs text-muted-foreground">{u}</p>
           </div>
         ))}
@@ -272,7 +272,7 @@ export function LiveDocumentUpload() {
           ))}
           <Appear show={n > 5 + reportLines.length}>
             <p className="text-xs text-muted-foreground">
-              Flags come from the lab's printed range — the clinician decides what they mean.
+              Flags come from the lab's printed range; the clinician decides what they mean.
             </p>
           </Appear>
         </div>
@@ -299,7 +299,7 @@ export function LivePrescriptionRead() {
             <div className="flex items-center justify-between">
               <p className="flex items-center gap-2 font-semibold">
                 <FileText className="h-4 w-4 text-primary" />
-                Prescription — {rx.doc}
+                Prescription: {rx.doc}
               </p>
               <span className="text-xs text-muted-foreground">
                 {n > d * 4 + 1 ? "Read ✓" : "Uploading…"}
@@ -401,7 +401,7 @@ export function LiveVerification() {
                   </span>
                 ))}
                 <span className="rounded-full bg-muted px-3 py-1 text-muted-foreground">
-                  Identity match only — physical authenticity not verified
+                  Identity match only, physical authenticity not verified
                 </span>
               </div>
             )}

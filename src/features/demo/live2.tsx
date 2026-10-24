@@ -171,7 +171,7 @@ export function LanguageConsent() {
         </ul>
         <Fade show={n > 4}>
           <p className="mt-3 rounded-xl bg-primary-soft p-3 text-sm font-semibold text-primary">
-            ✓ मैं सहमत हूँ — I agree (09:58 AM)
+            ✓ मैं सहमत हूँ / I agree (09:58 AM)
           </p>
         </Fade>
       </Box>
@@ -295,7 +295,7 @@ export function AssistedDetail() {
               <div className="h-2 w-1/8 rounded-full bg-primary" style={{ width: "12%" }} />
             </div>
             <p className="text-xs text-muted-foreground">
-              Step 1 of 8 · Introduction — staff reads questions with the patient
+              Step 1 of 8 · Introduction: staff reads questions with the patient
             </p>
           </div>
         )}
@@ -316,7 +316,7 @@ export function ClinicianDetail() {
       </div>
       <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
         <Box>
-          <H icon={Stethoscope}>Your clinical queue — sorted by priority</H>
+          <H icon={Stethoscope}>Your clinical queue: sorted by priority</H>
           <div className="space-y-2">
             {[...demoQueue]
               .sort((a, b) => (a.priority === "Urgent" ? -1 : b.priority === "Urgent" ? 1 : 0))
@@ -354,10 +354,10 @@ export function ClinicianDetail() {
           <Box>
             <H icon={Bell}>Needs your attention</H>
             <p className="rounded-xl bg-destructive/10 p-3 text-sm text-destructive">
-              Anjali Singh — severe headache, waiting 23 min
+              Anjali Singh: severe headache, waiting 23 min
             </p>
             <p className="mt-2 rounded-xl bg-primary-soft p-3 text-sm text-primary">
-              Meera Sharma — duplicate paracetamol flagged
+              Meera Sharma: duplicate paracetamol flagged
             </p>
           </Box>
           <Box>
@@ -439,8 +439,8 @@ export function CaseDetail() {
             <div className="space-y-2">
               {[
                 ["Blood test", "Hb 11.8 g/dL (Low) · Glucose 104 (Borderline)"],
-                ["Prescription — Dr. A", "Dolo 650, Pantop 40"],
-                ["Prescription — Dr. B", "Crocin Advance, Zerodl P"],
+                ["Prescription: Dr. A", "Dolo 650, Pantop 40"],
+                ["Prescription: Dr. B", "Crocin Advance, Zerodl P"],
               ].map(([a, b]) => (
                 <div
                   key={a}
@@ -537,13 +537,13 @@ export function TimelineDetail() {
             className="ml-44 mt-2 rounded-lg bg-destructive/10 px-3 py-1 text-xs text-destructive"
             style={{ marginLeft: `calc(11rem + ${(4 / 12) * 100}% * 0.8)`, width: "fit-content" }}
           >
-            06–07 Sep: two paracetamol products overlap
+            06 to 07 Sep: two paracetamol products overlap
           </div>
         </div>
       </Box>
       <div className="grid gap-4 sm:grid-cols-3">
         <Stat label="Active now" value="3" sub="Pantop, Crocin, Zerodol-P" />
-        <Stat label="Overlapping days" value="2" sub="06–07 Sep" />
+        <Stat label="Overlapping days" value="2" sub="06 to 07 Sep" />
         <Stat label="Prescribers" value="2" sub="General · Ortho" />
       </div>
     </div>
@@ -596,7 +596,7 @@ export function ReportDetail() {
               {demoPatient.age} y · Female · 64 kg · Allergies: none recorded · Report 10 Sep 2026
             </p>
           </div>
-          <Tag tone="primary">{n > 3 ? "Reviewed by pharmacist" : "Draft — awaiting review"}</Tag>
+          <Tag tone="primary">{n > 3 ? "Reviewed by pharmacist" : "Draft (awaiting review)"}</Tag>
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           <Stat label="Prescriptions" value="2" />
@@ -654,7 +654,7 @@ export function ReportDetail() {
           </div>
         </section>
         <section className="rounded-xl bg-muted p-3 text-sm text-muted-foreground">
-          Decision support only — not a diagnosis or prescription. Product identity is matched from
+          Decision support only, not a diagnosis or prescription. Product identity is matched from
           text; physical authenticity of medicines is not verified. Checks needing licensed data are
           marked unavailable.
         </section>
@@ -683,7 +683,7 @@ export function PatientHomeDetail() {
           <div className="space-y-3 border-l-2 border-primary/30 pl-4">
             {[
               ["10 Sep", "Medication safety report ready"],
-              ["09 Sep", "Consultation completed — Ayurveda OPD"],
+              ["09 Sep", "Consultation completed in Ayurveda OPD"],
               ["09 Sep", "Blood test added to records"],
               ["06 Sep", "Prescription from Dr. B uploaded"],
               ["02 Sep", "Prescription from Dr. A uploaded"],
@@ -703,7 +703,7 @@ export function PatientHomeDetail() {
             onClick={() => setQ(true)}
             className="w-full rounded-xl border border-border p-3 text-left hover:bg-muted"
           >
-            “मेरी रिपोर्ट कहाँ है?” — Where is my report?
+            “मेरी रिपोर्ट कहाँ है?” (Where is my report?)
           </button>
           {q && (
             <p className="rounded-xl bg-primary-soft p-3 text-primary animate-in fade-in">
@@ -712,7 +712,7 @@ export function PatientHomeDetail() {
             </p>
           )}
           <p className="text-xs text-muted-foreground">
-            Answers about your records only — no diagnosis. (Tap the question)
+            Answers about your records only, not a diagnosis. (Tap the question)
           </p>
         </div>
       </Box>
@@ -725,7 +725,7 @@ export function OpsAdminDetail() {
   return (
     <div className="grid gap-4 lg:grid-cols-2">
       <Box>
-        <H icon={Server}>Operations — system health</H>
+        <H icon={Server}>Operations: system health</H>
         <div className="grid grid-cols-3 gap-2">
           <Stat label="Events processed" value="1,284" sub="today" />
           <Stat label="Pending" value="3" />
@@ -736,7 +736,7 @@ export function OpsAdminDetail() {
             ["OCR · prescription DOC-118", "Completed", "muted"],
             ["Gemini · case summary MK-…001", "Completed", "muted"],
             ["Web evidence · Zerodl P", "Manual review", "primary"],
-            ["Sync · encounter 7731", "Failed — retry", "danger"],
+            ["Sync · encounter 7731", "Failed (retry)", "danger"],
           ].map(([a, b, t]) => (
             <div
               key={a}
@@ -754,7 +754,7 @@ export function OpsAdminDetail() {
         </p>
       </Box>
       <Box>
-        <H icon={Settings}>Admin — facility setup</H>
+        <H icon={Settings}>Admin: facility setup</H>
         <div className="grid grid-cols-3 gap-2">
           <Stat label="Facilities" value="3" />
           <Stat label="Staff users" value="42" />
@@ -762,7 +762,7 @@ export function OpsAdminDetail() {
         </div>
         <div className="mt-3 space-y-2 text-sm">
           {[
-            [Building2, "City OPD — Main building", "Active"],
+            [Building2, "City OPD: Main building", "Active"],
             [Users, "Roles: Reception, Clinician, Pharmacist, Operator, Admin", "5 roles"],
             [KeyRound, "External processing approval", "On"],
             [Globe, "Languages enabled", "Hindi, English"],
@@ -814,12 +814,12 @@ export function ClosingDetail() {
         <H icon={CheckCircle2}>Built with</H>
         <div className="flex flex-wrap gap-2">
           {[
-            "Gemini — clinical reading",
-            "Groq — assistant, voice & web search",
-            "ElevenLabs — spoken prompts",
-            "OCR.space — document text",
-            "Turso — secure storage",
-            "Clerk — sign-in",
+            "Gemini: clinical reading",
+            "Groq: assistant, voice & web search",
+            "ElevenLabs: spoken prompts",
+            "OCR.space: document text",
+            "Turso: secure storage",
+            "Clerk: sign-in",
           ].map((t) => (
             <Tag key={t} tone="primary">
               {t}

@@ -40,8 +40,8 @@ export const demoVitals = [
 
 export const demoDocuments = [
   { title: "Blood test report", type: "Report", date: "09 Sep 2026", fields: 14 },
-  { title: "Prescription — Dr. A (General)", type: "Prescription", date: "02 Sep 2026", fields: 3 },
-  { title: "Prescription — Dr. B (Ortho)", type: "Prescription", date: "06 Sep 2026", fields: 2 },
+  { title: "Prescription: Dr. A (General)", type: "Prescription", date: "02 Sep 2026", fields: 3 },
+  { title: "Prescription: Dr. B (Ortho)", type: "Prescription", date: "06 Sep 2026", fields: 2 },
 ];
 
 export const demoQueue = [

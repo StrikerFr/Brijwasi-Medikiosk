@@ -7,13 +7,13 @@ export const Route = createFileRoute("/demo")({
   }),
   head: () => ({
     meta: [
-      { title: "Product Demo - MediKiosk" },
+      { title: "Product Demo | MediKiosk" },
       {
         name: "description",
         content:
           "A guided, prefilled walkthrough of every MediKiosk feature, from check-in to clinician report.",
       },
-      { property: "og:title", content: "Product Demo - MediKiosk" },
+      { property: "og:title", content: "Product Demo | MediKiosk" },
       {
         property: "og:description",
         content:

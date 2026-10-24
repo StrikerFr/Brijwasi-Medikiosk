@@ -101,9 +101,9 @@ function Field({ label, value }: { label: string | undefined; value: string | un
 const steps: Step[] = [
   {
     group: "Intro",
-    title: "MediKiosk — voice-first patient intake",
+    title: "MediKiosk: Voice-First Patient Intake",
     icon: HeartPulse,
-    say: "Patients speak their problem in Hindi or English. No typing. The clinician receives a clear, structured case — and a safety check of every medicine they already take.",
+    say: "Patients speak their problem in Hindi or English without typing. The clinician receives a clear, structured case and a safety check of every medicine they already take.",
     live: "/",
     body: <IntroDetail />,
   },
@@ -111,7 +111,7 @@ const steps: Step[] = [
     group: "Patient kiosk",
     title: "1. Language & consent",
     icon: Globe,
-    say: "The kiosk greets in Hindi and English together. The patient taps a language and agrees to share information — every screen can be read aloud.",
+    say: "The kiosk greets in Hindi and English together. The patient taps a language and agrees to share information, with every screen readable aloud.",
     live: "/patient-kiosk",
     body: <LanguageConsent />,
   },
@@ -141,9 +141,9 @@ const steps: Step[] = [
   },
   {
     group: "Patient kiosk",
-    title: "4b. Document upload — live reading",
+    title: "4b. Document upload and live reading",
     icon: FileText,
-    say: "The patient holds an old report to the camera. MediKiosk uploads it, reads the text, recognises the document type and pulls out each value — all in seconds.",
+    say: "The patient holds an old report to the camera. MediKiosk uploads it, reads the text, recognises the document type and pulls out each value in seconds.",
     live: "/patient-kiosk/documents",
     body: <LiveDocumentUpload />,
   },
@@ -175,7 +175,7 @@ const steps: Step[] = [
     group: "Care team",
     title: "8. Prepared patient case",
     icon: FileText,
-    say: "One click opens the full case: what the patient said (original + translation), vitals, documents and alerts — before the consultation starts.",
+    say: "One click opens the full case: what the patient said (original and translation), vitals, documents and alerts before the consultation starts.",
     live: "/clinician/patients",
     body: <CaseDetail />,
   },
@@ -191,7 +191,7 @@ const steps: Step[] = [
     group: "Medication safety",
     title: "10. Indian brand verification",
     icon: Pill,
-    say: "Each brand is matched to its active ingredient using live web sources with links. Low-confidence matches go to a pharmacist — and 'not found' never means fake.",
+    say: "Each brand is matched to its active ingredient using live web sources with links. Low-confidence matches go to a pharmacist, and 'not found' never means fake.",
     live: "/medication-safety",
     body: <LiveVerification />,
   },
@@ -207,7 +207,7 @@ const steps: Step[] = [
     group: "Medication safety",
     title: "12. Safety findings",
     icon: ShieldAlert,
-    say: "Findings are ranked by priority, each with a plain explanation and the next action. Checks without a licensed source are shown as unavailable — never guessed.",
+    say: "Findings are ranked by priority, each with a plain explanation and the next action. Checks without a licensed source are shown as unavailable rather than guessed.",
     live: "/medication-safety",
     body: <LiveFindings />,
   },
@@ -239,7 +239,7 @@ const steps: Step[] = [
     group: "Close",
     title: "Thank you",
     icon: CheckCircle2,
-    say: "From a patient's spoken words to a reviewed, safer medication plan — in one MediKiosk flow.",
+    say: "From a patient's spoken words to a reviewed, safer medication plan in one MediKiosk flow.",
     live: "/",
     body: <ClosingDetail />,
   },
@@ -308,7 +308,7 @@ export function DemoTour() {
       if (e.key === "ArrowLeft") go(step - 1);
     };
     window.addEventListener("keydown", onKey);
-    document.title = `${step + 1}/${steps.length} — ${s.title} · MediKiosk Demo`;
+    document.title = `${step + 1}/${steps.length}: ${s.title} · MediKiosk Demo`;
     return () => window.removeEventListener("keydown", onKey);
   }, [go, step, s.title]);
 
