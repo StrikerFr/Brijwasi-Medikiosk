@@ -32,7 +32,9 @@ export async function identity() {
   } catch {
     throw new Error("Professional authorization configuration is invalid");
   }
-  const role = configured[session.userId] || "patient";
+  const claimEmail = (session.sessionClaims as Record<string, unknown> | undefined)?.["email"];
+  const email = typeof claimEmail === "string" ? claimEmail.toLowerCase() : "";
+  const role = configured[session.userId] || (email ? configured[email] : undefined) || "patient";
   return { id: session.userId, role, professional: isProfessional(role) };
 }
 export async function safetyDb() {

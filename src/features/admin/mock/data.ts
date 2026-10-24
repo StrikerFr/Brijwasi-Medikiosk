@@ -9,12 +9,26 @@ import type {
 } from "../types";
 
 export const adminSession: AdminSession = {
-  name: "System Administrator",
+  name: "Striker (itzboistrikerbolte1@gmail.com)",
   role: "Administrator",
-  facility: "Demo Facility",
+  facility: "All Facilities (Super Admin)",
   status: "Active",
 };
 export const adminUsers: AdminUser[] = [
+  {
+    id: "MK-USER-000",
+    name: "Admin (itzboistrikerbolte1@gmail.com)",
+    role: "Administrator",
+    facility: "All Facilities",
+    status: "Active",
+    lastActivity: "Active now",
+    initials: "SA",
+    access: [
+      { label: "Clinical Workspace", assigned: true },
+      { label: "Patient Assistance", assigned: true },
+      { label: "Administration", assigned: true },
+    ],
+  },
   {
     id: "MK-USER-001",
     name: "Dr. Ananya Sharma",
